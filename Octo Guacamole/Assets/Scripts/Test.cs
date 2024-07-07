@@ -14,9 +14,6 @@ public class Test : MonoBehaviour
         delete.onClick.AddListener(Delete);
 
         materials = FilesName.GetFilesNames("Assets/Resources/Thirdparty/Materials/", ".mat").ToArray();
-
-        
-        
     }
 
     // Update is called once per frame
@@ -33,12 +30,14 @@ public class Test : MonoBehaviour
         newPart.transform.SetParent(tower.transform);
 
         newPart.GetComponent<Renderer>().material = (Material) Resources.Load(randMaterial());
+        Debug.Log("Created");
     }
 
     public void Delete() {
         GameObject secondChild = tower.transform.GetChild(1).gameObject;
         Destroy(secondChild);
         tower.transform.GetChild(0).transform.localPosition -= new Vector3(0,10,0);
+        Debug.Log("Deleted");
         // tower.transform.position -= new Vector3(0,10,0);
         // Debug.Log(tower.transform.childCount);
     }
